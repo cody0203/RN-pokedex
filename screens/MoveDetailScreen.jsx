@@ -13,6 +13,7 @@ import * as actions from '../store/move/move.actions';
 import { TYPE_MAPPING } from '../constants/types-mapping';
 import { transformedColor } from '../utils/helper';
 import BodyText from '../components/BodyText';
+import StatDetailThreeItem from '../components/StatDetailThreeItem';
 
 const MoveDetailScreen = ({ navigation, route }) => {
   // INITIAL
@@ -32,6 +33,10 @@ const MoveDetailScreen = ({ navigation, route }) => {
     ? TYPE_MAPPING[capitalize(moveType).trim()].bgColor
     : 'white';
   const desc = get(moveDetailData, 'effect_entries[0].effect');
+  const effectChance = get(moveDetailData, 'effect_chance');
+  const power = get(moveDetailData, 'power');
+  const accuracy = get(moveDetailData, 'accuracy');
+  const pp = get(moveDetailData, 'pp');
   // LIFECYCLE HOOKS
   useEffect(() => {
     dispatch(actions.fetchMoveDetailStart(moveId));
@@ -92,7 +97,7 @@ const MoveDetailScreen = ({ navigation, route }) => {
       <View style={styles.screen}>
         <View style={styles.avatarContainer}>
           <Image
-            source={TYPE_MAPPING[capitalize(moveType).trim()].uri}
+            source={get(TYPE_MAPPING[capitalize(moveType).trim()], 'uri')}
             style={styles.avatar}
           />
         </View>
@@ -100,11 +105,30 @@ const MoveDetailScreen = ({ navigation, route }) => {
           <View style={styles.nameContainer}>
             <Title style={styles.name}>{moveName}</Title>
             <Image
-              source={TYPE_MAPPING[capitalize(moveType).trim()].tag}
+              source={get(TYPE_MAPPING[capitalize(moveType).trim()], 'tag')}
               style={styles.tag}
             />
             <View style={styles.descContainer}>
-              <BodyText style={styles.desc}>{desc}</BodyText>
+              <BodyText style={styles.desc}>
+                {desc &&
+                  desc
+                    .replace(/\$effect_chance/g, effectChance)
+                    .replace(/\s\s+/g, ' ')}
+              </BodyText>
+            </View>
+
+            <View style={styles.statContainer}>
+              <StatDetailThreeItem
+                mainTitle={null}
+                mainColor={transformedColor(getBackgroundColor).colors[0]}
+                section_1={{ title: 'Base Power', content: power }}
+                section_2={{ title: 'Accuracy', content: `${accuracy}%` }}
+                section_3={{ title: 'PP', content: pp }}
+                sectionStyle={{
+                  width: '100%',
+                  justifyContent: 'space-around',
+                }}
+              />
             </View>
           </View>
         </View>
@@ -150,11 +174,14 @@ const styles = StyleSheet.create({
     width: 110,
     height: 30,
   },
-  descContainer: {},
   desc: {
     fontSize: 15,
     color: '#4F4F4F',
-    marginHorizontal: 15,
+    marginHorizontal: 10,
+    textAlign: 'center',
+  },
+  statContainer: {
+    width: '100%',
   },
 });
 

@@ -10,7 +10,6 @@ function* fetchPokemonListAsync({ payload }) {
         const { data, meta } = response.data;
         yield put(actions.fetchPokemonListSuccess({ data, meta }));
     } catch (error) {
-        console.log(error);
         yield put(actions.fetchPokemonListFailure(error.message));
     }
 }

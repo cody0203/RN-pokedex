@@ -29,7 +29,6 @@ const MoveListScreen = ({ navigation }) => {
     get(store, 'moveReducer.moveList')
   );
 
-  console.log(moveListData, moveListLoading);
   // REUSEABLE
   const dispatch = useDispatch();
   const listRef = useRef(null);
@@ -92,11 +91,12 @@ const MoveListScreen = ({ navigation }) => {
 
           {type && (
             <Image
-              source={
+              source={get(
                 TYPE_MAPPING[
                   type.charAt(0).toUpperCase() + type.slice(1).trim()
-                ].uri
-              }
+                ],
+                'uri'
+              )}
               style={styles.type}
               PlaceholderContent={<ActivityIndicator />}
               key={type.name}

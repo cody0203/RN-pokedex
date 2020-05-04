@@ -3,7 +3,7 @@ import { Text, StyleSheet } from 'react-native';
 
 const BodyText = ({ children, style }) => {
   return (
-    <Text style={{ ...styles.bodyText, ...style }} numberOfLines={2}>
+    <Text style={{ ...styles.bodyText, ...style }} numberOfLines={4}>
       {children}
     </Text>
   );

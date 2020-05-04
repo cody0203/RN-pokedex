@@ -11,6 +11,7 @@ import { zeroPad } from '../../utils/helper';
 
 import BodyText from '../BodyText';
 import Title from '../Title';
+import StatDetailThreeItem from '../StatDetailThreeItem';
 
 const maxStats = {
   STA: 400,
@@ -43,10 +44,9 @@ const PokemonDetailStats = ({
   const abilities = get(pokemonDetailData, 'abilities_data');
   const sprites = get(pokemonDetailData, 'sprites');
 
-  console.log(pokemonDetailData);
   return (
     <View style={styles.statsContainer}>
-      <View style={styles.sectionContainer}>
+      <View style={{ ...styles.sectionContainer, paddingHorizontal: 15 }}>
         {stats.map((stat) => (
           <View style={styles.statCountContainer} key={stat.label}>
             <BodyText style={{ ...styles.statLabel, color: mainColor }}>
@@ -67,7 +67,14 @@ const PokemonDetailStats = ({
         ))}
       </View>
 
-      <View style={styles.sectionContainer}>
+      <StatDetailThreeItem
+        mainTitle={'Capture'}
+        mainColor={mainColor}
+        section_1={{ title: 'Generation', content: generation }}
+        section_2={{ title: 'Capture Rate', content: captureRate }}
+        section_3={{ title: 'Flee Rate', content: fleeRate }}
+      />
+      {/* <View style={styles.sectionContainer}>
         <Title style={{ ...styles.sectionTitle, color: mainColor }}>
           Capture
         </Title>
@@ -99,7 +106,7 @@ const PokemonDetailStats = ({
             <BodyText style={styles.captureContent}>{fleeRate}</BodyText>
           </View>
         </View>
-      </View>
+      </View> */}
 
       <View style={styles.sectionContainer}>
         <Title style={{ ...styles.sectionTitle, color: mainColor }}>
@@ -193,7 +200,7 @@ const PokemonDetailStats = ({
 const styles = StyleSheet.create({
   statsContainer: {
     width: '100%',
-    paddingHorizontal: 15,
+    // paddingHorizontal: 15,
     marginTop: 15,
   },
   sectionContainer: {

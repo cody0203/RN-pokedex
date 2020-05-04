@@ -89,4 +89,9 @@ export const TYPE_MAPPING = {
     tag: require('../assets/tag-types/water.png'),
     bgColor: '90deg, #559EDF 37.6%, #69B9E3 62.4%',
   },
+  Shadow: {
+    uri: require('../assets/pokemon-types/unknown.png'),
+    tag: require('../assets/tag-types/unknown.png'),
+    bgColor: '90deg, #D4D4D4 0%, #BEBEBE 100%',
+  },
 };
