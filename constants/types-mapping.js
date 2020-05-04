@@ -1,6 +1,6 @@
 export const TYPE_MAPPING = {
   Grass: {
-    uri: require('../assets/pokemon-types/grass.png'),
+    uri: require('../assets/pokemon-types/bug.png'),
     tag: require('../assets/tag-types/grass.png'),
     bgColor: '90deg, #5FBC51 0%, #5AC178 100%',
   },

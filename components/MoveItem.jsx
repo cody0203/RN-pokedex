@@ -19,7 +19,7 @@ const MoveItem = ({ name, desc, type, index, data }) => {
         <Title style={styles.title}>{name}</Title>
         <BodyText style={styles.desc}>{desc}</BodyText>
       </View>
-      <Image source={TYPE_MAPPING[type].uri} />
+      <Image source={TYPE_MAPPING[type].uri} style={styles.image} />
     </View>
   );
 };
@@ -44,6 +44,10 @@ const styles = StyleSheet.create({
   desc: {
     flexShrink: 1,
     color: '#A4A4A4',
+  },
+  image: {
+    width: 40,
+    height: 40,
   },
 });
 

@@ -38,10 +38,6 @@ const PokemonDetailScreen = ({ navigation, route }) => {
     get(store, 'pokemonReducer.pokemonDetail')
   );
 
-  const abilities = get(pokemonDetailData, 'abilities');
-  const sprites = get(pokemonDetailData, 'sprites');
-  const moves = get(pokemonDetailData, 'moves');
-
   const pokemonName = get(pokemonDetailData, 'name');
   const pokemonTypes = get(pokemonDetailData, 'field_pokemon_type');
   const avatar = get(pokemonDetailData, 'avatar');

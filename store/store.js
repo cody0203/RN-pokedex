@@ -3,11 +3,7 @@ import createSagaMiddleware from 'redux-saga';
 
 import rootReducer from './reducer';
 import rootSaga from './saga';
-
-const composeEnhancers =
-  (window.__REDUX_DEVTOOLS_EXTENSION__ &&
-    window.__REDUX_DEVTOOLS_EXTENSION__()) ||
-  compose;
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const sagaMiddleware = createSagaMiddleware();
 

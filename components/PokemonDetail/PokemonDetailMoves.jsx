@@ -10,7 +10,7 @@ const PokemonDetailMoves = () => {
     get(store, 'pokemonReducer.pokemonDetail')
   );
 
-  const moves = get(pokemonDetailData, 'moves');
+  const moves = get(pokemonDetailData, 'moves_data');
 
   return (
     <View>

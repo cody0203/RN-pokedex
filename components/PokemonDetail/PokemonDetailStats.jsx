@@ -40,7 +40,7 @@ const PokemonDetailStats = ({
     get(store, 'pokemonReducer.pokemonDetail')
   );
 
-  const abilities = get(pokemonDetailData, 'abilities');
+  const abilities = get(pokemonDetailData, 'abilities_data');
   const sprites = get(pokemonDetailData, 'sprites');
 
   console.log(pokemonDetailData);

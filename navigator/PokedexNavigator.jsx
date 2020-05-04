@@ -37,7 +37,7 @@ const MoveNavigator = () => {
     <MoveStackNavigator.Navigator screenOptions={defaultNavigatorOptions}>
       <MoveStackNavigator.Screen name="MoveList" component={MoveListScreen} />
       <MoveStackNavigator.Screen
-        name="MoveDetails"
+        name="MoveDetail"
         component={MoveDetailScreen}
       />
     </MoveStackNavigator.Navigator>
