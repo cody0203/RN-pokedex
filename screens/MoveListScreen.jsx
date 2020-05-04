@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { get } from 'lodash';
-import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { View, Text, StyleSheet, FlatList, ActivityIndicator } from 'react-native';
+import { Image } from 'react-native-elements';
 import { useDispatch, useSelector } from 'react-redux';
 import CustomHeaderButton from '../components/CustomHeaderButton';
 import CustomSearchBar from '../components/CustomSearchBar';
@@ -10,6 +11,8 @@ import { Button } from 'react-native-elements';
 import Loading from '../components/Loading';
 
 import * as actions from '../store/move/move.actions';
+import { TYPE_MAPPING } from '../constants/types-mapping';
+
 import * as customHooks from '../utils/custom-hooks';
 import { isCloseToBottom } from '../utils/helper';
 
@@ -70,9 +73,20 @@ const MoveListScreen = ({ navigation }) => {
     }, [moveListData, currentPage]);
 
     const renderMoveList = ({ item }) => {
+        const type = get(item, 'type.name');
+
         return (
             <View>
                 <Title>{item.name}</Title>
+
+                {type && (
+                    <Image
+                        source={TYPE_MAPPING[type.charAt(0).toUpperCase() + type.slice(1).trim()].uri}
+                        style={styles.type}
+                        PlaceholderContent={<ActivityIndicator />}
+                        key={type.name}
+                    />
+                )}
             </View>
         );
     };
@@ -127,6 +141,13 @@ const MoveListScreen = ({ navigation }) => {
     );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+    type: {
+        width: 30,
+        height: 30,
+        marginHorizontal: 15,
+        borderRadius: 50,
+    },
+});
 
 export default MoveListScreen;
