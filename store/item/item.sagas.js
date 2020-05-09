@@ -18,7 +18,6 @@ function* fetchItemDetailAsync({ payload }) {
   try {
     const response = yield call(apis.fetchItemDetail, payload);
     const data = response.data;
-    console.log(data);
     yield put(actions.fetchItemDetailSuccess(data));
   } catch (error) {
     yield put(actions.fetchItemDetailFailure(error.message));

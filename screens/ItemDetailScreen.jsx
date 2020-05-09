@@ -69,6 +69,7 @@ const ItemDetailScreen = ({ navigation, route }) => {
     });
   }, [itemDetailLoading]);
 
+
   return (
     <LinearGradient
       colors={gradientColors}
@@ -83,7 +84,14 @@ const ItemDetailScreen = ({ navigation, route }) => {
       ) : (
         <View style={styles.screen}>
           <View style={styles.avatarContainer}>
-            <Image source={{ uri: avatar }} style={styles.avatar} />
+            <Image
+              source={{
+                uri: `https://www.serebii.net/itemdex/sprites/pgl/${itemName
+                  .replace(/ /g, '')
+                  .toLowerCase()}.png`,
+              }}
+              style={styles.avatar}
+            />
           </View>
 
           <View style={styles.mainContentContainer}>
@@ -132,7 +140,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,
-    marginTop: 70,
+    marginTop: 75,
     height: '100%',
   },
   nameContainer: {
