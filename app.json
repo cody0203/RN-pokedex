@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "RN-pokedex",
-    "slug": "RN-pokedex",
+    "name": "Minimal Dex",
+    "slug": "minimal-dex",
     "platforms": [
       "ios",
       "android",
@@ -23,6 +23,8 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "description": "",
+    "githubUrl": "https://github.com/cody0203/RN-pokedex"
   }
 }
